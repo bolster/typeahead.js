@@ -568,7 +568,7 @@
                         !isDuplicate && matchesWithBackfill.push(remoteMatch);
                         return matchesWithBackfill.length < that.limit;
                     });
-                    cb && cb(matchesWithBackfill.sort(this.sorter));
+                    cb && cb(matchesWithBackfill.sort(that.sorter));
                 }
                 function pickRaw(obj) {
                     return obj.raw;
@@ -577,10 +577,10 @@
         });
         return Dataset;
         function getSorter(sorter) {
-            return sorter || defaultSorter;
             function defaultSorter() {
                 return 0;
             }
+            return sorter || defaultSorter;
         }
         function getDupChecker(dupChecker) {
             if (!_.isFunction(dupChecker)) {
